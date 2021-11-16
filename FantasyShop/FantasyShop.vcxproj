@@ -139,13 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Armor.cpp" />
     <ClCompile Include="FantasyShop.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ShopApp.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Armor.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ShopApp.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
