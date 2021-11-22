@@ -8,10 +8,12 @@
 #include <chrono>
 #include <thread>
 #include <vector>
+#include <string>
 
 #include "Item.h"
 #include "Weapon.h"
 #include "Armor.h"
+
 
 class ShopApp
 {

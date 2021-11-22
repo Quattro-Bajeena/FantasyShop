@@ -14,11 +14,11 @@ q. Quit
 
     programRunning = true;
 
-    weapons.emplace_back("Muramasa", 0.5, 1000, 50);
-    weapons.emplace_back("Masamune", 9.6, 500, 20);
+    weapons.emplace_back("Gungnir", 0.5, 1000, 50);
+    weapons.emplace_back("Muramasa", 9.6, 500, 20);
 
-    armors.emplace_back("Black Tar", 88.4, 250, 999);
-    armors.emplace_back("Shadowbringer", 12.2, 850, 2999);
+    armors.emplace_back("Aegis", 88.4, 250, 999);
+    armors.emplace_back("Havel", 12.2, 850, 2999);
 }
 
 void ShopApp::ClearConsole() {
@@ -136,11 +136,25 @@ void ShopApp::AddWeapon()
     std::cout << "Pass weapon parameters in given order\n";
     std::cout << "Name weight price attack\n";
 
-    std::string name;
-    float weight, price; 
-    int attack;
+    std::string name, weightStr, priceStr, attackStr;
+    float weight; 
+    int attack, price;
+    bool correctValues = false;
 
-    std::cin >> name >> weight >> price >> attack;
+    while (correctValues == false) {
+        std::cin >> name >> weightStr >> priceStr >> attackStr;
+        try {
+            weight = std::stof(weightStr);
+            price = std::stoi(priceStr);
+            attack = std::stoi(attackStr);
+            correctValues = true;
+        }
+        catch (std::invalid_argument ex) {
+            std::cout << "Incorrect values\n";
+            correctValues = false;
+        }
+    }
+    
     weapons.emplace_back(name, weight, price, attack);
     std::cout << "Weapon added\n";
 }
@@ -152,9 +166,24 @@ void ShopApp::AddArmor()
     std::cout << "Pass armor parameters in given order\n";
     std::cout << "Name weight price defence\n";
 
-    std::string name;
-    float weight, price;
-    int defence;
+    std::string name, weightStr, priceStr, defenceStr;
+    float weight;
+    int defence, price;
+    bool correctValues = false;
+
+    while (correctValues == false) {
+        std::cin >> name >> weightStr >> priceStr >> defenceStr;
+        try {
+            weight = std::stof(weightStr);
+            price = std::stoi(priceStr);
+            defence = std::stoi(defenceStr);
+            correctValues = true;
+        }
+        catch (std::invalid_argument ex) {
+            std::cout << "Incorrect values\n";
+            correctValues = false;
+        }
+    }
 
     std::cin >> name >> weight >> price >> defence;
     armors.emplace_back(name, weight, price, defence);
@@ -177,9 +206,16 @@ void ShopApp::DeleteItem()
     }
 
     int itemToDelete = 0;
-    while (itemToDelete < 1 || itemToDelete > counter) {
-        std::cin >> itemToDelete;
-        if (itemToDelete < 1 || itemToDelete > counter) {
+    std::string itemToDeleteStr;
+    while (itemToDelete < 1 || itemToDelete >= counter) {
+        std::cin >> itemToDeleteStr;
+        try {
+            itemToDelete = std::stoi(itemToDeleteStr);
+        }
+        catch (std::invalid_argument ex) {
+            continue;
+        }
+        if (itemToDelete < 1 || itemToDelete >= counter) {
             continue;
         }
 
@@ -217,9 +253,17 @@ void ShopApp::ModifyItem()
     }
 
     int itemToModify = 0;
-    while (itemToModify < 1 || itemToModify > counter) {
-        std::cin >> itemToModify;
-        if (itemToModify < 1 || itemToModify > counter) {
+    std::string itemToModifyStr;
+    while (itemToModify < 1 || itemToModify >= counter) {
+        std::cin >> itemToModifyStr;
+        try {
+            itemToModify = std::stoi(itemToModifyStr);
+        }
+        catch (std::invalid_argument ex) {
+            continue;
+        }
+
+        if (itemToModify < 1 || itemToModify >= counter) {
             continue;
         }
 
@@ -249,6 +293,7 @@ void ShopApp::ModifyWeapon(Weapon& weapon)
 
     while ( !(pickedOption == "1" || pickedOption == "2" || pickedOption == "3" || pickedOption == "4") ) {
         std::cin >> pickedOption;
+        bool correctValue = false;
 
         if (pickedOption == "1") {
             std::cout << "Enter new name: ";
@@ -256,31 +301,65 @@ void ShopApp::ModifyWeapon(Weapon& weapon)
             std::cin >> name;
             std::cout << "New name of " << weapon.GetName() << " is " << name << "\n";
             weapon.SetName(name);
-            PressToCont();
         }
         else if (pickedOption == "2") {
             std::cout << "Enter new weight: ";
             float weight;
-            std::cin >> weight;
+            std::string weightStr;
+            correctValue = false;
+            while (correctValue == false) {
+                std::cin >> weightStr;
+                try {
+                    weight = std::stof(weightStr);
+                    correctValue = true;
+                }
+                catch (std::invalid_argument ex) {
+                    correctValue = false;
+                    std::cout << "Incorect value\n";
+                }
+            }
+            
             std::cout << "Old weight: " << weapon.GetWeight() << " new weight: " << weight << "\n";
             weapon.SetWeight(weight);
-            PressToCont();
         }
         else if (pickedOption == "3") {
             std::cout << "Enter new price: ";
             int price;
+            std::string priceStr;
+            correctValue = false;
+            while (correctValue == false) {
+                std::cin >> priceStr;
+                try {
+                    price = std::stoi(priceStr);
+                    correctValue = true;
+                }
+                catch (std::invalid_argument ex) {
+                    correctValue = false;
+                    std::cout << "Incorect value\n";
+                }
+            }
             std::cin >> price;
             std::cout << "Old price: " << weapon.GetPrice() << " new price: " << price << "\n";
             weapon.SetPrice(price);
-            PressToCont();
         }
         else if (pickedOption == "4") {
             std::cout << "Enter new attack value: ";
             int attack;
-            std::cin >> attack;
+            std::string attackStr;
+            correctValue = false;
+            while (correctValue == false) {
+                std::cin >> attackStr;
+                try {
+                    attack = std::stoi(attackStr);
+                    correctValue = true;
+                }
+                catch (std::invalid_argument ex) {
+                    correctValue = false;
+                    std::cout << "Incorect value\n";
+                }
+            }
             std::cout << "Old attack: " << weapon.GetAttack() << " new attack: " << attack << "\n";
             weapon.SetAttack(attack);
-            PressToCont();
         }
     }
     
@@ -301,7 +380,7 @@ void ShopApp::ModifyArmor(Armor& armor)
 
     while ( !(pickedOption == "1" || pickedOption == "2" || pickedOption == "3" || pickedOption == "4") ) {
         std::cin >> pickedOption;
-
+        bool correctValue = false;
         if (pickedOption == "1") {
             std::cout << "Enter new name: ";
             std::string name;
@@ -312,21 +391,57 @@ void ShopApp::ModifyArmor(Armor& armor)
         else if (pickedOption == "2") {
             std::cout << "Enter new weight: ";
             float weight;
-            std::cin >> weight;
+            std::string weightStr;
+            correctValue = false;
+            while (correctValue == false) {
+                std::cin >> weightStr;
+                try {
+                    weight = std::stof(weightStr);
+                    correctValue = true;
+                }
+                catch (std::invalid_argument ex) {
+                    correctValue = false;
+                    std::cout << "Incorect value\n";
+                }
+            }
             std::cout << "Old weight: " << armor.GetWeight() << " new weight: " << weight << "\n";
             armor.SetWeight(weight);
         }
         else if (pickedOption == "3") {
             std::cout << "Enter new price: ";
             int price;
-            std::cin >> price;
+            std::string priceStr;
+            correctValue = false;
+            while (correctValue == false) {
+                std::cin >> priceStr;
+                try {
+                    price = std::stoi(priceStr);
+                    correctValue = true;
+                }
+                catch (std::invalid_argument ex) {
+                    correctValue = false;
+                    std::cout << "Incorect value\n";
+                }
+            }
             std::cout << "Old price: " << armor.GetPrice() << " new price: " << price << "\n";
             armor.SetPrice(price);
         }
         else if (pickedOption == "4") {
             std::cout << "Enter new defence value: ";
             int attack;
-            std::cin >> attack;
+            std::string attackStr;
+            correctValue = false;
+            while (correctValue == false) {
+                std::cin >> attackStr;
+                try {
+                    attack = std::stoi(attackStr);
+                    correctValue = true;
+                }
+                catch (std::invalid_argument ex) {
+                    correctValue = false;
+                    std::cout << "Incorect value\n";
+                }
+            }
             std::cout << "Old defence: " << armor.GetDefence() << " new defence: " << attack << "\n";
             armor.SetDefence(attack);   
         }
