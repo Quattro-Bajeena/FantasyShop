@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 
 class Item
 {
@@ -16,6 +17,8 @@ public:
 	void SetName(std::string new_name);
 	void SetWeight(float new_weight);
 	void SetPrice(int new_price);
+
+	virtual void Modify();
 
 	virtual void Print(std::ostream& o) const = 0;
 	friend std::ostream& operator << (std::ostream& o, const Item& item);
