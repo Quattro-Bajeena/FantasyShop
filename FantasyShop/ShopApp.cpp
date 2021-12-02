@@ -48,16 +48,18 @@ void ShopApp::ClearConsole() {
 void ShopApp::PressToCont()
 {
     std::cout << "Pres Enter to continue\n";
-    std::cin.ignore(1000, '\n');
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.get();
 }
 
 void ShopApp::Run()
 {
     while (programRunning) {
+        
         ClearConsole();
         std::cout << menuText;
         std::cin >> pickedOption;
+        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (pickedOption == "1") {
             ShowWeapons();
@@ -77,6 +79,7 @@ void ShopApp::Run()
         else if (pickedOption == "q") {
             programRunning = false;
         }
+        
     }
 }
 
@@ -142,6 +145,7 @@ void ShopApp::AddWeapon()
     bool correctValues = false;
 
     while (correctValues == false) {
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cin >> name >> weightStr >> priceStr >> attackStr;
         try {
             weight = std::stof(weightStr);
@@ -172,6 +176,7 @@ void ShopApp::AddArmor()
     bool correctValues = false;
 
     while (correctValues == false) {
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cin >> name >> weightStr >> priceStr >> defenceStr;
         try {
             weight = std::stof(weightStr);
@@ -185,7 +190,6 @@ void ShopApp::AddArmor()
         }
     }
 
-    std::cin >> name >> weight >> price >> defence;
     armors.emplace_back(name, weight, price, defence);
     std::cout << "Armor added\n";
 }

@@ -1,5 +1,6 @@
 #pragma once
 #ifdef _WIN32
+#define NOMINMAX
 #include <Windows.h>
 #endif
 
@@ -9,6 +10,7 @@
 #include <thread>
 #include <vector>
 #include <string>
+#include <limits>
 
 #include "Item.h"
 #include "Weapon.h"
