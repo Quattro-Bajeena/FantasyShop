@@ -88,6 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -102,6 +103,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,17 +141,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Armor.cpp" />
-    <ClCompile Include="FantasyShop.cpp" />
-    <ClCompile Include="Item.cpp" />
-    <ClCompile Include="ShopApp.cpp" />
-    <ClCompile Include="Weapon.cpp" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Armor.h" />
-    <ClInclude Include="Item.h" />
-    <ClInclude Include="ShopApp.h" />
-    <ClInclude Include="Weapon.h" />
+    <ClCompile Include="cpp\Armor.cpp" />
+    <ClCompile Include="cpp\FantasyShop.cpp" />
+    <ClCompile Include="cpp\Item.cpp" />
+    <ClCompile Include="cpp\ShopApp.cpp" />
+    <ClCompile Include="cpp\Weapon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="headers\Armor.h" />
+    <ClInclude Include="headers\Item.h" />
+    <ClInclude Include="headers\ShopApp.h" />
+    <ClInclude Include="headers\Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

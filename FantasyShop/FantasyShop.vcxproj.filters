@@ -15,33 +15,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FantasyShop.cpp">
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cpp\FantasyShop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
+    <ClCompile Include="cpp\Item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShopApp.cpp">
+    <ClCompile Include="cpp\ShopApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Weapon.cpp">
+    <ClCompile Include="cpp\Weapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Armor.cpp">
+    <ClCompile Include="cpp\Armor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Item.h">
+    <ClInclude Include="headers\Armor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShopApp.h">
+    <ClInclude Include="headers\Item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Weapon.h">
+    <ClInclude Include="headers\ShopApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Armor.h">
+    <ClInclude Include="headers\Weapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

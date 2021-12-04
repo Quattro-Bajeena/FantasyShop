@@ -59,7 +59,6 @@ void ShopApp::Run()
         ClearConsole();
         std::cout << menuText;
         std::cin >> pickedOption;
-        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (pickedOption == "1") {
             ShowWeapons();
