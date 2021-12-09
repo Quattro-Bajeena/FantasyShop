@@ -15,6 +15,7 @@
 #include "Item.h"
 #include "Weapon.h"
 #include "Armor.h"
+#include "Manager.h"
 
 
 class ShopApp
@@ -27,6 +28,7 @@ private:
 
 	std::vector<Weapon> weapons;
 	std::vector<Armor> armors;
+
 
 	void ClearConsole();
 	void PressToCont();
@@ -43,6 +45,11 @@ private:
 	void ModifyItem();
 	void ModifyWeapon(Weapon& weapon);
 	void ModifyArmor(Armor& armor);
+
+	// OBRONA C++ ZADANIE
+	Manager manager;
+	void Sumowanie();
+
 
 public:
 	ShopApp();

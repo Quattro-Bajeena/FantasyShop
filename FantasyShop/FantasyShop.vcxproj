@@ -147,12 +147,14 @@
     <ClCompile Include="cpp\Armor.cpp" />
     <ClCompile Include="cpp\FantasyShop.cpp" />
     <ClCompile Include="cpp\Item.cpp" />
+    <ClCompile Include="cpp\Manager.cpp" />
     <ClCompile Include="cpp\ShopApp.cpp" />
     <ClCompile Include="cpp\Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Armor.h" />
     <ClInclude Include="headers\Item.h" />
+    <ClInclude Include="headers\Manager.h" />
     <ClInclude Include="headers\ShopApp.h" />
     <ClInclude Include="headers\Weapon.h" />
   </ItemGroup>

@@ -9,6 +9,7 @@ ShopApp::ShopApp()
 3. Add Item
 4. Delete Item
 5. Modify Item
+6. Sumowanie - obrona projektu
 q. Quit
 )";
 
@@ -19,6 +20,12 @@ q. Quit
 
     armors.emplace_back("Aegis", 88.4, 250, 999);
     armors.emplace_back("Havel", 12.2, 850, 2999);
+
+    // OBRONA C++ ZADANIE
+    manager.AddItem(new Weapon("Weapon1", 1, 20, 1));
+    manager.AddItem(new Weapon("Weapon2", 1, 50, 1));
+    manager.AddItem(new Armor("Armor1", 1, 15, 1));
+    manager.AddItem(new Armor("Armor2", 1, 63, 1));
 }
 
 void ShopApp::ClearConsole() {
@@ -74,6 +81,9 @@ void ShopApp::Run()
         }
         else if (pickedOption == "5") {
             ModifyItem();
+        }
+        else if (pickedOption == "6") {
+            Sumowanie();
         }
         else if (pickedOption == "q") {
             programRunning = false;
@@ -452,6 +462,16 @@ void ShopApp::ModifyArmor(Armor& armor)
             std::cout << "Wrong option\n";
         }
     }
+}
+
+void ShopApp::Sumowanie()
+{
+    ClearConsole();
+    std::cout << "Manager jest polem w klasie ShopApp.\nPrzedmioty dodawane sa do niego w jej konstruktorze\n\n";
+    std::cout << "Suma pola int Price dla przedmiotow w klasie manager: ";
+    int sum = Suma(manager);
+    std::cout << sum << "\n\n";
+    PressToCont();
 }
 
 
